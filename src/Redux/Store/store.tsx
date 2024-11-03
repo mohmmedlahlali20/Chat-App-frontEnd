@@ -1,15 +1,12 @@
-
-import {configureStore} from '@reduxjs/toolkit'
+import {configureStore} from '@reduxjs/toolkit';
+import channelReducer from '../Slices/Channel/ChannelSlice';
 
 const store = configureStore({
     reducer: {
-        // Define your reducers here
-    }
+        channel: channelReducer,
+    },
+});
 
-})
-
-export type RootState = ReturnType<typeof store.getState>
-export type AddDispatch = typeof store.dispatch
-
-
-export default store
+export type RootState = ReturnType<typeof store.getState>;
+export type AppDispatch = typeof store.dispatch;
+export default store;
