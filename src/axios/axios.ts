@@ -7,7 +7,7 @@ const path = axios.create({
 path.interceptors.request.use(
     function(config) {
         config.headers['Content-Type'] = 'multipart/form-data';
-        config.headers['Accept'] = 'application/json'
+        config.headers['Content-Type'] = 'application/json';
         return config;
     },
     function(err) {
