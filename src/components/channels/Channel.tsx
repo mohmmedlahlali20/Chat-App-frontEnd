@@ -1,35 +1,25 @@
-import {useEffect} from 'react';
-import {useDispatch, useSelector} from 'react-redux';
-import {AppDispatch, RootState} from '../../Redux/Store/store';
-import {getChannel} from '../../Redux/Slices/Channel/ChannelSlice';
-import path from '../../axios/axios';
+import {useGetChannelsQuery} from "../../services/channelApi.tsx";
 
 function Channel() {
-    const dispatch = useDispatch<AppDispatch>();
+    const {data, error, isLoading} = useGetChannelsQuery('publicChannel');
+    console.log(data)
+    if (isLoading) {
+        return <p>Chargement des canaux...</p>;
+    }
 
-    useEffect(() => {
-        const fetchChannels = async () => {
-            try {
-                const response = await path.get('/channels');
-                console.log(response.data)
-                dispatch(getChannel(response.data));
-            } catch (error) {
-                console.error('Error fetching channels:', error);
-            }
-        };
-
-        fetchChannels();
-    }, [dispatch]);
-
-    const channels = useSelector((state: RootState) => state.channel.channels);
+    if (error) {
+        return <p className="text-red-500">Erreur lors de la récupération des canaux.</p>;
+    }
 
     return (
         <div>
-            <h1>Channels</h1>
-            {channels.map((channel) => (
-                <div key={channel._id}>
-                    <h2>{channel.Title}</h2>
-
+            <h1 className="text-2xl font-bold mb-4">Channels</h1>
+            {data && data.map((channel: any) => (
+                <div key={channel._id} className="p-4 border-b border-gray-200">
+                    <h2 className="text-lg font-bold">{channel.Title}</h2>
+                    <p className="text-sm text-gray-600">
+                        Créé par : {channel.userId?.username || "Utilisateur inconnu"}
+                    </p>
                 </div>
             ))}
         </div>
