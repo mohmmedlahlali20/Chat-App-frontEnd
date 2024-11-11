@@ -1,18 +1,22 @@
+import { Outlet } from "react-router-dom";
 import {Sidebar} from "./index.ts";
 
 function Layout() {
     return (
         <>
-            <header>
-                <Sidebar />
-            </header>
-            <main>
-                <div className="container">
-                    <div className="chat-box">
-
+        <div className="flex">
+                <header>
+                    <Sidebar />
+                </header>
+                <main>
+                    <div className="container">
+                        <div className="chat-box">
+                            <Outlet/>
+                        </div>
                     </div>
-                </div>
-            </main>
+                </main>
+
+            </div>
 
         </>
     );

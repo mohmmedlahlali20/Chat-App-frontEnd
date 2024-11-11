@@ -1,5 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
 import { Layout } from "../pages/layouts";
+import { AllChannels } from "../components";
 
 const router = createBrowserRouter([
     {
@@ -9,6 +10,12 @@ const router = createBrowserRouter([
                 path: "/",
                 element: <div>helo</div>
             },
+
+            { 
+                path: "/AllChannels",
+                element: <AllChannels />
+
+            }
         ]
     }
 ]);
