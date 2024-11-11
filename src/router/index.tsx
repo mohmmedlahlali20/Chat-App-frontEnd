@@ -1,5 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 import { Layout } from "../pages/layouts";
+import { NotFound } from "../pages";
+import {ChatBox} from "../components";
 
 const router = createBrowserRouter([
     {
@@ -7,9 +9,13 @@ const router = createBrowserRouter([
         children: [
             {
                 path: "/",
-                element: <div>helo</div>
+                element: <ChatBox />
             },
         ]
+    },
+    {
+        path: "*",
+        element: <NotFound />
     }
 ]);
 
