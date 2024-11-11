@@ -1,15 +1,15 @@
-import {createBrowserRouter} from "react-router-dom";
-import {Channel, CreateChannel} from "../components";
-
+import { createBrowserRouter } from "react-router-dom";
+import { Layout } from "../pages/layouts";
 
 const router = createBrowserRouter([
     {
-        path: "/Channels",
-        element: <Channel />
-    },
-    {
-        path: "/Channels/Create",
-        element: <CreateChannel />
+        element: <Layout />,
+        children: [
+            {
+                path: "/",
+                element: <div>helo</div>
+            },
+        ]
     }
 ]);
 
