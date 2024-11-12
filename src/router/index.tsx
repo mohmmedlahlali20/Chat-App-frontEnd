@@ -1,7 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 import { Layout } from "../pages/layouts";
 import { NotFound } from "../pages";
-import {ChatBox} from "../components";
+import {ChatBox, VideoCall} from "../components";
 
 const router = createBrowserRouter([
     {
@@ -11,6 +11,11 @@ const router = createBrowserRouter([
                 path: "/",
                 element: <ChatBox />
             },
+            {
+                path: "/video-call",
+                element: <VideoCall />
+
+            }
         ]
     },
     {
