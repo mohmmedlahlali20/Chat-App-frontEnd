@@ -4,7 +4,7 @@ import {Badge} from '@mui/material';
 import logo from "../../assets/logo.png";
 import profile from "../../assets/profile.png";
 import friendIcon from "../../assets/friends_request.png"
-import {AccountCircleOutlined, ChatBubble, HomeOutlined, LogoutOutlined, PeopleOutlined} from '@mui/icons-material';
+import {ChatBubble, HomeOutlined, LogoutOutlined} from '@mui/icons-material';
 
 const Sidebar: React.FC = () => {
     return (
