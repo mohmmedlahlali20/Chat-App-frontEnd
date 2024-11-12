@@ -1,5 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 import { Layout } from "../pages/layouts";
+import { NotFound } from "../pages";
+import {ChatBox} from "../components";
 import { AllChannels } from "../components";
 
 const router = createBrowserRouter([
@@ -8,16 +10,16 @@ const router = createBrowserRouter([
         children: [
             {
                 path: "/",
-                element: <div>helo</div>
+                element: <ChatBox />
             },
-
-            { 
-                path: "/AllChannels",
-                element: <AllChannels />
-
-            }
-        ]
-    }
+          
+        ]   
+    },
+    {
+        path: "*",
+        element: <NotFound />
+    },
+    
 ]);
 
 export default router;

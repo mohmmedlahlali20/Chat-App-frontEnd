@@ -6,22 +6,22 @@ import {AccountCircleOutlined, ChatBubble, Dashboard, HomeOutlined, LogoutOutlin
 const Sidebar: React.FC = () => {
     return (
         <div
-            className="h-screen w-16 bg-white shadow-lg flex flex-col items-center py-4 border border-blue-300 rounded-xl">
+            className="h-screen w-16 container   ml-3 bg-white shadow-lg flex flex-col items-center py-4 border border-blue-300 rounded-xl">
             <div className="mb-6">
-                <Dashboard fontSize="large" className="text-purple-500"/>
+                <Dashboard fontSize="large" className="text-blue-500"/>
             </div>
 
             <div className="mb-6 cursor-pointer">
-                <HomeOutlined fontSize="large" className="text-purple-500"/>
+                <HomeOutlined fontSize="large" className="text-blue-500"/>
             </div>
 
-            <div className="mb-6 cursor-pointer bg-purple-100 rounded-full p-2">
-                <ChatBubble fontSize="large" className="text-purple-500"/>
+            <div className="mb-6 cursor-pointer bg-blue-100 rounded-full p-2">
+                <ChatBubble fontSize="large" className="text-blue-500"/>
             </div>
 
             <div className="mb-6 cursor-pointer relative">
                 <Badge badgeContent={2} color="error" overlap="circular">
-                    <PeopleOutlined fontSize="large" className="text-purple-500"/>
+                    <PeopleOutlined fontSize="large" className="text-blue-500"/>
                 </Badge>
             </div>
 
@@ -29,11 +29,11 @@ const Sidebar: React.FC = () => {
 
             <div className="flex flex-col items-center mt-4 space-y-6">
                 <AccountCircleOutlined
-                    fontSize="large" className="text-purple-500"
+                    fontSize="large" className="text-blue-500"
                 />
 
                 <div className="cursor-pointer">
-                    <LogoutOutlined fontSize="large" className="text-purple-500"/>
+                    <LogoutOutlined fontSize="large" className="text-blue-500"/>
                 </div>
             </div>
         </div>

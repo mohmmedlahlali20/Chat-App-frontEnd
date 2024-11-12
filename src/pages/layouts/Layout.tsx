@@ -1,24 +1,19 @@
+
+import { Sidebar } from "./index";
 import { Outlet } from "react-router-dom";
-import {Sidebar} from "./index.ts";
 
 function Layout() {
     return (
-        <>
-        <div className="flex">
-                <header>
-                    <Sidebar />
-                </header>
-                <main>
-                    <div className="container">
-                        <div className="chat-box">
-                            <Outlet/>
-                        </div>
+        <div className="flex flex-col overflow-y-hidden">
+            <main className="flex-grow flex items-center justify-center  ">
+                <Sidebar />
+                <div className="container mx-auto ">
+                    <div className="">
+                        <Outlet />
                     </div>
-                </main>
-
-            </div>
-
-        </>
+                </div>
+            </main>
+        </div>
     );
 }
 
