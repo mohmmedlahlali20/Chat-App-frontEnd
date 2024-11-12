@@ -10,19 +10,20 @@ import {
     PhotoCamera,
     AccountCircle
 } from '@mui/icons-material';
+import profile from "../../assets/profile.png";
+
 
 const ChatBox: React.FC = () => {
     return (
-        <div className='flex'>
-              <div>
-            </div>
-                <div className="w-full min-h-screen m-2 max-w-md  bg-white border border-blue-300 rounded-xl shadow-lg flex flex-col">
+      
+      
+            <div className="my-auto h-[870px] w-[650px] shadow shadow-md shadow-[#79C5EF]/60 m-2 bg-white rounded-xl shadow-lg flex flex-col">
  
-            <div className="p-4 flex items-center border-b border-gray-200">
-                <AccountCircle className="mr-3" />
+            <div className="p-4 flex gap-4 px-5 items-center border-b border-gray-200">
+                <img src={profile} alt="" />
                 <div className="flex flex-col flex-grow">
-                    <span className="font-bold">Western</span>
-                    <span className="text-sm text-gray-500">Online</span>
+                    <span className="font-bold font-serif text-lg">Western</span>
+                    <span className="text-sm text-gray-500 font-mono">Online</span>
                 </div>
                 <div className="flex items-center space-x-2 text-purple-500">
                     <IconButton>
@@ -37,21 +38,23 @@ const ChatBox: React.FC = () => {
                 </div>
             </div>
 
-            <div className="flex-grow p-4 overflow-y-auto space-y-4">
-                <div className="flex items-start">
-                    <div className="bg-gray-200 text-gray-800 py-2 px-4 rounded-2xl text-sm max-w-xs">
-                        slm3alkyom
+
+            <div className="flex-grow p-4 overflow-y-auto space-y-4 px-5 py-6">
+
+                <div className="flex flex-col items-start">
+                    <div className="bg-[#E7E7E7] font-medium font-sans text-gray-800 py-2 px-4 rounded-2xl text-sm max-w-xs">
+                        <p>slm3alkyom</p>
                     </div>
-                    <span className="text-xs text-gray-400 ml-2">Today, 8:30pm</span>
+                    <span className="text-xs text-gray-400 ml-2 py-1">Today, 8:30pm</span>
                 </div>
 
 
 
-                <div className="flex items-end justify-end">
-                    <span className="text-xs text-gray-400 mr-2">Today, 8:33pm</span>
-                    <div className="bg-purple-500 text-white py-2 px-4 rounded-2xl text-sm max-w-xs">
+                <div className="flex flex-col items-end justify-end">
+                    <div className="bg-[#6E00FF] text-white font-medium font-sans py-2 px-4 rounded-2xl text-sm max-w-xs">
                         nn bon8
                     </div>
+                    <span className="text-xs text-gray-400 py-1 mr-2">Today, 8:33pm</span>
                 </div>
 
 
@@ -78,7 +81,6 @@ const ChatBox: React.FC = () => {
      
         </div>
                </div>
-        </div>
 
      
     );
