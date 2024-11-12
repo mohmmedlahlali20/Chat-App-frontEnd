@@ -13,8 +13,11 @@ import {
 
 const ChatBox: React.FC = () => {
     return (
-        <div className="w-full min-h-screen m-2 max-w-md  bg-white border border-blue-300 rounded-xl shadow-lg flex flex-col">
-
+        <div className='flex'>
+              <div>
+            </div>
+                <div className="w-full min-h-screen m-2 max-w-md  bg-white border border-blue-300 rounded-xl shadow-lg flex flex-col">
+ 
             <div className="p-4 flex items-center border-b border-gray-200">
                 <AccountCircle className="mr-3" />
                 <div className="flex flex-col flex-grow">
@@ -72,8 +75,12 @@ const ChatBox: React.FC = () => {
                 <IconButton color="primary">
                     <Send />
                 </IconButton>
-            </div>
+     
         </div>
+               </div>
+        </div>
+
+     
     );
 };
 

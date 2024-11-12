@@ -2,6 +2,7 @@ import { createBrowserRouter } from "react-router-dom";
 import { Layout } from "../pages/layouts";
 import { NotFound } from "../pages";
 import {ChatBox} from "../components";
+import { AllChannels } from "../components";
 
 const router = createBrowserRouter([
     {
@@ -11,12 +12,14 @@ const router = createBrowserRouter([
                 path: "/",
                 element: <ChatBox />
             },
-        ]
+          
+        ]   
     },
     {
         path: "*",
         element: <NotFound />
-    }
+    },
+    
 ]);
 
 export default router;
