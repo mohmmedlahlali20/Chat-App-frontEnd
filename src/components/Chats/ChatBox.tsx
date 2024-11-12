@@ -10,7 +10,6 @@ import {
     PhotoCamera,
     AccountCircle
 } from '@mui/icons-material';
-import AllChannels from '../channels/AllChannels';
 
 const ChatBox: React.FC = () => {
     return (

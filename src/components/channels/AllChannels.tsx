@@ -1,4 +1,3 @@
-import { Sidebar } from "../../pages/layouts";
 import profile from "../../assets/profile.png";
 
 function AllChannels () {
