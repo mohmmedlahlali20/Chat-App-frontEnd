@@ -6,7 +6,7 @@ import {AccountCircleOutlined, ChatBubble, Dashboard, HomeOutlined, LogoutOutlin
 const Sidebar: React.FC = () => {
     return (
         <div
-            className=" w-16 container   ml-3 bg-white shadow-lg flex flex-col items-center py-4 border border-blue-300 rounded-xl">
+            className="h-screen w-16 container   ml-3 bg-white shadow-lg flex flex-col items-center py-4 border border-blue-300 rounded-xl">
             <div className="mb-6">
                 <Dashboard fontSize="large" className="text-blue-500"/>
             </div>
