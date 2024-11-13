@@ -2,6 +2,7 @@ import profile from "../assets/profile.png";
 import { useGetChannelsQuery } from "../services/channelApi.tsx";
 
 function ChannelList() {
+    // @ts-ignore
     const { data, error, isLoading } = useGetChannelsQuery('publicChannel');
 
     if (isLoading) {
