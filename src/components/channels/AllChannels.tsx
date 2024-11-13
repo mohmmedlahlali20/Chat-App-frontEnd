@@ -19,11 +19,7 @@ function AllChannels () {
                                 <div className="h-[230px] overflow-y-auto custom-scroll">
                                     
                                     <ChannelList />
-                                    <ChannelList />
-                                    <ChannelList />
-                                    <ChannelList />
-                                    <ChannelList />
-                                    <ChannelList />
+
 
 
                                 </div>
