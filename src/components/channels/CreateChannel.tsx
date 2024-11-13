@@ -1,11 +1,25 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import Swal from 'sweetalert2';
-import path from '../../axios/axios';
 import { addChannel } from '../../Redux/Slices/Channel/ChannelSlice';
-import { Button, IconButton, TextField, Select, MenuItem, InputLabel, FormControl, Popper, Paper, Checkbox, ListItemText } from '@mui/material';
+import {
+    Button,
+    IconButton,
+    TextField,
+    Select,
+    MenuItem,
+    InputLabel,
+    FormControl,
+    Popper,
+    Paper,
+    Checkbox,
+    ListItemText
+} from '@mui/material';
+
 import AddIcon from '@mui/icons-material/Add';
 import { SelectChangeEvent } from '@mui/material/Select';
+import { useGetUsersQuery } from '../../services/userApi.tsx';
+import path from '../../axios/axios.ts'
 
 function CreateChannel() {
     const [channelName, setChannelName] = useState('');
@@ -15,14 +29,9 @@ function CreateChannel() {
     const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
 
     const dispatch = useDispatch();
-    const userId = localStorage.getItem('userId') || '6725462b4c93c6bb37c7a971';
+    const userId = '6725462b4c93c6bb37c7a971';
 
-    useEffect(() => {
-        setMembers([userId]);
-        if (!localStorage.getItem('userId')) {
-            localStorage.setItem('userId', userId);
-        }
-    }, [userId]);
+    const { data: allUsers = [], isLoading, error } = useGetUsersQuery();
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
@@ -36,7 +45,6 @@ function CreateChannel() {
             });
             dispatch(addChannel(response.data));
 
-
             Swal.fire({
                 icon: 'success',
                 title: 'Succès',
@@ -46,8 +54,8 @@ function CreateChannel() {
             });
 
             setChannelName('');
+            setMembers([]);
         } catch (err) {
-
             Swal.fire({
                 icon: 'error',
                 title: 'Erreur',
@@ -93,26 +101,31 @@ function CreateChannel() {
                             >
                                 <MenuItem value="public">Public</MenuItem>
                                 <MenuItem value="private">Privé</MenuItem>
-                                <MenuItem value="conversation">Conversation</MenuItem>
                             </Select>
                         </FormControl>
 
                         <FormControl fullWidth variant="outlined">
                             <InputLabel>Membres</InputLabel>
-                            <Select
-                                multiple
-                                value={members}
-                                onChange={handleMembersChange}
-                                renderValue={(selected) => selected.join(', ')}
-                                label="Membres"
-                            >
-                                {['123456', '789101', '112131', '141516'].map((user) => (
-                                    <MenuItem key={user} value={user}>
-                                        <Checkbox checked={members.includes(user)} />
-                                        <ListItemText primary={user} />
-                                    </MenuItem>
-                                ))}
-                            </Select>
+                            {isLoading ? (
+                                <p>Loading...</p>
+                            ) : error ? (
+                                <p>Error fetching users</p>
+                            ) : (
+                                <Select
+                                    multiple
+                                    value={members}
+                                    onChange={handleMembersChange}
+                                    renderValue={(selected) => selected.join(', ')}
+                                    label="Membres"
+                                >
+                                    {allUsers.map((user) => (
+                                        <MenuItem key={user._id} value={user._id}>
+                                            <Checkbox checked={members.includes(user._id)} />
+                                            <ListItemText primary={user.name} />
+                                        </MenuItem>
+                                    ))}
+                                </Select>
+                            )}
                         </FormControl>
 
                         <Button type="submit" variant="contained" color="primary" fullWidth>
