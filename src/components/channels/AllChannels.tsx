@@ -1,8 +1,22 @@
 import InputSearch from "../inputSearch";
 import ChannelList from "../channelList";
 import FriendList from "../friendList";
+import profile from "../../assets/profile.png";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "@reduxjs/toolkit/query";
+import { useEffect } from "react";
+import { getFriends } from "../../Redux/Slices/Friend/FriendSlice";
+
 
 function AllChannels () {
+
+        const dispatch = useDispatch();
+        const friends = useSelector((state: RootState) => state.friends.friends);
+        const loading = useSelector((state: RootState) => state.friends.loading);
+
+        useEffect(() => {
+            dispatch(getFriends());
+        }, [dispatch]);
 
         return (
             <>
@@ -30,13 +44,7 @@ function AllChannels () {
 
                                 <div className="h-[230px] overflow-y-auto custom-scroll">
                                     
-                                    <ChannelList />
-                                    <ChannelList />
-                                    <ChannelList />
-                                    <ChannelList />
-                                    <ChannelList />
-                                    <ChannelList />
-
+                                    <ChannelList profile={profile} name={"Mohamed Joual"} count={2} message={"I am fine and how are you ?"} date={"Today, 9.52pm"} />
 
                                 </div>
                             </div>
@@ -47,13 +55,13 @@ function AllChannels () {
 
                                 <div className="h-[300px] overflow-y-auto custom-scroll">
 
-                                    <FriendList />
-                                    <ChannelList />
-                                    <ChannelList />
-                                    <ChannelList />
-                                    <ChannelList />
-                                    <ChannelList />
-
+                                    {loading ? (
+                                        <p>Loading ...</p>
+                                    ) : (
+                                        friends.map(friend => (
+                                            <FriendList key={friend._id} profile={profile} name={friend.name} count={3} message={"How Are You !"} date={'Today, 9.52pm'} />
+                                        ))
+                                    )}
 
                                 </div>
                             </div>
