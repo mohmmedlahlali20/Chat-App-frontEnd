@@ -6,3 +6,7 @@
 .custom-scroll::-webkit-scrollbar {
     display: none; /* Chrome, Safari, and Opera */
 }
+
+body {
+    background-color:#EFF6FC;
+}

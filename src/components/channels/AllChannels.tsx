@@ -44,7 +44,7 @@ function AllChannels () {
 
                                 <div className="h-[230px] overflow-y-auto custom-scroll">
                                     
-                                    <ChannelList profile={profile} name={"Mohamed Joual"} count={2} message={"I am fine and how are you ?"} date={"Today, 9.52pm"} /><ChannelList />
+                                    <ChannelList profile={profile} name={"Mohamed Joual"} count={2} message={"I am fine and how are you ?"} date={"Today, 9.52pm"} />
 
                                 </div>
                             </div>
