@@ -39,8 +39,9 @@ function AllChannels() {
                                           d="M14 6H4a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V7a1 1 0 0 0-1-1Zm7 11-6-2V9l6-2v10Z"/>
                                 </svg>
                             </div>
-                            <div
-                                className="bg-[#D9D9D9] group hover:bg-[#6E00FF]/10 duration-300 cursor-pointer px-3 py-1 rounded-full">
+
+                          
+                            <div className="bg-[#D9D9D9] group hover:bg-[#6E00FF]/10 duration-300 cursor-pointer px-3 py-1 rounded-full">
                                 <svg className="w-6 h-6 text-[#612DD1] font-bold" aria-hidden="true"
                                      xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
                                      viewBox="0 0 24 24">
@@ -48,8 +49,7 @@ function AllChannels() {
                                           stroke-width="2" d="M5 12h14m-7 7V5"/>
                                 </svg>
                             </div>
-                        </div>
-                    </div>
+                          
                     <InputSearch/>
 
                     <div className=" px-5 py-5  rounded-2xl bg-white shadow shadow-md shadow-[#79C5EF]/60">
