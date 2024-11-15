@@ -1,24 +1,27 @@
 import profile from "../assets/profile.png";
-import { useGetChannelsQuery } from "../services/channelApi.tsx";
+import { useGetChannelsQuery } from "../services/channelApi";
 
 function ChannelList() {
-    // @ts-ignore
-    const { data, error, isLoading } = useGetChannelsQuery('publicChannel');
+    const { data: channels, error, isLoading, refetch } = useGetChannelsQuery('publicChannel');
 
     if (isLoading) {
         return <p>Chargement des canaux...</p>;
     }
 
     if (error) {
-        return <p className="text-red-500">Erreur lors de la récupération des canaux.</p>;
+        return (
+            <p className="text-red-500 bg-red-100 p-4 rounded-lg border border-red-300 shadow-lg">
+                Erreur lors de la récupération des canaux.
+            </p>
+        );
     }
 
     return (
         <div className="flex flex-col gap-4">
-            {data && data.map((channel: any) => (
+            {channels && channels.map((channel) => (
                 <div key={channel._id} className="flex justify-between items-center border-b py-3">
-                    <div className="flex justify-center items-center gap-6">
-                        <img src={profile} alt="Profile" />
+                    <div className="flex items-center gap-6">
+                        <img src={profile} alt="Profile" className="w-10 h-10 rounded-full" />
                         <div>
                             <h1 className="font-medium text-lg">{channel.Title}</h1>
                             <p className="text-sm text-gray-600">{channel.type}</p>

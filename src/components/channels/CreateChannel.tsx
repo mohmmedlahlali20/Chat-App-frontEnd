@@ -21,7 +21,7 @@ import { SelectChangeEvent } from '@mui/material/Select';
 import { useGetUsersQuery } from '../../services/userApi.tsx';
 import path from '../../axios/axios.ts'
 
-function CreateChannel() {
+function CreateChannel({ refetchChannels }: { refetchChannels: () => void }) {
     const [channelName, setChannelName] = useState('');
     const [channelType, setChannelType] = useState('private');
     const [members, setMembers] = useState<string[]>([]);
@@ -55,6 +55,7 @@ function CreateChannel() {
 
             setChannelName('');
             setMembers([]);
+            refetchChannels(); // Rafraîchit la liste des canaux
         } catch (err) {
             Swal.fire({
                 icon: 'error',
