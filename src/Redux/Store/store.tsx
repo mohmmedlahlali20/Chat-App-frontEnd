@@ -6,12 +6,14 @@ import { channelApi } from '../../services/channelApi.tsx';
 import { setupListeners } from '@reduxjs/toolkit/query';
 import usersReducer from '../Slices/users/userSlice';
 import { userApi } from '../../services/userApi';
+import messageSlice from "../Slices/messages/MessageSlice.ts";
 const store = configureStore({
     reducer: {
         channel: channelReducer,
         friends: friendReducer,
         login: loginReducer,
         users: usersReducer,
+        messages: messageSlice,
         [channelApi.reducerPath]: channelApi.reducer,
         [userApi.reducerPath]: userApi.reducer,
     },
