@@ -13,7 +13,8 @@ import {
     Popper,
     Paper,
     Checkbox,
-    ListItemText
+    ListItemText,
+
 } from '@mui/material';
 
 import AddIcon from '@mui/icons-material/Add';
@@ -55,7 +56,7 @@ function CreateChannel({ refetchChannels }: { refetchChannels: () => void }) {
 
             setChannelName('');
             setMembers([]);
-            refetchChannels(); // Rafraîchit la liste des canaux
+            refetchChannels();
         } catch (err) {
             Swal.fire({
                 icon: 'error',
@@ -129,9 +130,19 @@ function CreateChannel({ refetchChannels }: { refetchChannels: () => void }) {
                             )}
                         </FormControl>
 
-                        <Button type="submit" variant="contained" color="primary" fullWidth>
-                            Créer le Canal
-                        </Button>
+                        <div className="flex gap-2">
+                            <Button type="submit" variant="contained" color="primary" fullWidth>
+                                <AddIcon />
+                            </Button>
+                            <Button
+                                variant="contained"
+                                color="error"
+                                fullWidth
+                                onClick={() => setOpen(false)}
+                            >
+                                close
+                            </Button>
+                        </div>
                     </form>
                 </Paper>
             </Popper>
