@@ -10,7 +10,11 @@ import {CreateChannel} from "../index.ts";
 import {useGetChannelsQuery} from "../../services/channelApi.tsx"
 
 
-function AllChannels() {
+function AllChannels({ onSelectChannel }: { onSelectChannel: (id: string) => void }) {
+
+    const handleChannelClick = (id: string) => {
+        onSelectChannel(id);
+    };
 
     const dispatch = useDispatch();
     // @ts-ignore
@@ -19,6 +23,7 @@ function AllChannels() {
     const loading = useSelector((state: RootState) => state.friends.loading);
 
     useEffect(() => {
+        // @ts-ignore
         dispatch(getFriends());
     }, [dispatch]);
 
@@ -58,7 +63,7 @@ function AllChannels() {
                             <CreateChannel refetchChannels={refetch} />
                         </div>
                         <div className="h-[230px] overflow-y-auto custom-scroll">
-                            <ChannelList/>
+                            <ChannelList onChannelClick={handleChannelClick} />
                         </div>
                     </div>
 

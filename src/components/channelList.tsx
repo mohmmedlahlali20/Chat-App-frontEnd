@@ -1,8 +1,12 @@
 import profile from "../assets/profile.png";
-import { useGetChannelsQuery } from "../services/channelApi";
+import {useGetChannelsQuery} from "../services/channelApi";
 
-function ChannelList() {
-    const { data: channels, error, isLoading, refetch } = useGetChannelsQuery('publicChannel');
+interface ChannelListProps {
+    onChannelClick: (id: string) => void;
+}
+
+function ChannelList({ onChannelClick }: ChannelListProps) {
+    const { data: channels, error, isLoading } = useGetChannelsQuery("publicChannel");
 
     if (isLoading) {
         return <p>Chargement des canaux...</p>;
@@ -19,7 +23,11 @@ function ChannelList() {
     return (
         <div className="flex flex-col gap-4">
             {channels && channels.map((channel) => (
-                <div key={channel._id} className="flex justify-between items-center border-b py-3">
+                <div
+                    key={channel._id}
+                    className="flex justify-between items-center border-b py-3 cursor-pointer hover:bg-gray-100"
+                    onClick={() => onChannelClick(channel._id)}
+                >
                     <div className="flex items-center gap-6">
                         <img src={profile} alt="Profile" className="w-10 h-10 rounded-full" />
                         <div>
