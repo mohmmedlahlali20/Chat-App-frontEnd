@@ -3,6 +3,7 @@ import { Layout } from "../pages/layouts";
 import { NotFound } from "../pages";
 import {ChatBox} from "../components";
 import { Home } from "../pages";
+import { Login } from "../pages";
  
 const router = createBrowserRouter([
     {
@@ -23,6 +24,10 @@ const router = createBrowserRouter([
         path: "/Home",
         element: <Home />
     },
+    {
+        path: "/Login",
+        element: <Login />
+    }
     
 ]);
 
