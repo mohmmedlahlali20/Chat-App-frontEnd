@@ -1,4 +1,4 @@
-import { configureStore } from '@reduxjs/toolkit';
+import {configureStore} from '@reduxjs/toolkit';
 import channelReducer from '../Slices/Channel/ChannelSlice';
 import friendReducer from '../Slices/Friend/FriendSlice.ts';
 import loginReducer from '../Slices/Auth/LoginSlice.ts';
@@ -6,8 +6,11 @@ import registerReducer from '../Slices/Auth/RegisterSlice.ts';
 import { channelApi } from '../../services/channelApi.tsx';
 import { setupListeners } from '@reduxjs/toolkit/query';
 import usersReducer from '../Slices/users/userSlice';
-import { userApi } from '../../services/userApi';
+import {userApi} from '../../services/userApi';
 import messageSlice from "../Slices/messages/MessageSlice.ts";
+import {messageApi} from "../../services/messageApi.tsx";
+
+
 const store = configureStore({
     reducer: {
         channel: channelReducer,
@@ -18,9 +21,15 @@ const store = configureStore({
         messages: messageSlice,
         [channelApi.reducerPath]: channelApi.reducer,
         [userApi.reducerPath]: userApi.reducer,
+        [messageApi.reducerPath]: messageApi.reducer
     },
     middleware: (getDefaultMiddleware) =>
-        getDefaultMiddleware().concat(channelApi.middleware,userApi.middleware),
+        getDefaultMiddleware()
+            .concat(
+                channelApi.middleware,
+                userApi.middleware,
+                messageApi.middleware
+            ),
 
 });
 

@@ -10,7 +10,11 @@ import {CreateChannel} from "../index.ts";
 import {useGetChannelsQuery} from "../../services/channelApi.tsx"
 
 
-function AllChannels() {
+function AllChannels({ onSelectChannel }: { onSelectChannel: (id: string) => void }) {
+
+    const handleChannelClick = (id: string) => {
+        onSelectChannel(id);
+    };
 
     const dispatch = useDispatch();
     const { refetch } = useGetChannelsQuery('publicChannel');
@@ -18,10 +22,12 @@ function AllChannels() {
     const loading = useSelector((state: RootState) => state.friends.loading);
 
     useEffect(() => {
+        // @ts-ignore
         dispatch(getFriends());
     }, [dispatch]);
 
     console.log(friends); 
+
 
     return (
         <div className="my-auto w-[500px]">
@@ -47,6 +53,16 @@ function AllChannels() {
                                 d="M14 6H4a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V7a1 1 0 0 0-1-1Zm7 11-6-2V9l6-2v10Z"
                             />
                         </svg>
+                      
+                    <div className=" px-5 py-5  rounded-2xl bg-white shadow shadow-md shadow-[#79C5EF]/60">
+                        <div className='flex justify-between'>
+                            <h1 className="text-xl font-bold font-serif mb-2">Channels</h1>
+                            <CreateChannel refetchChannels={refetch} />
+                        </div>
+                        <div className="h-[230px] overflow-y-auto custom-scroll">
+                            <ChannelList onChannelClick={handleChannelClick} />
+                        </div>
+                      
                     </div>
     
                     <div className="bg-[#D9D9D9] group hover:bg-[#6E00FF]/10 duration-300 cursor-pointer px-3 py-1 rounded-full">

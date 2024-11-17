@@ -25,13 +25,13 @@ const messageSlice = createSlice({
             state.messages.push(action.payload)
         },
 
+
         removeMessage: (state, action: PayloadAction<{ _id: string; sender: string }>) => {
-            const { _id, sender } = action.payload;
+            const {_id, sender} = action.payload;
             state.messages = state.messages.filter(
                 (msg) => msg._id !== _id || msg.sender !== sender
             );
         }
-
 
 
     },
@@ -39,7 +39,7 @@ const messageSlice = createSlice({
 
 export const {
     sendMessage,
-    removeMessage
+    removeMessage,
 } = messageSlice.actions
 
 
