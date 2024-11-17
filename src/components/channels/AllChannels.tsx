@@ -13,7 +13,6 @@ import {useGetChannelsQuery} from "../../services/channelApi.tsx"
 function AllChannels() {
 
     const dispatch = useDispatch();
-    // @ts-ignore
     const { refetch } = useGetChannelsQuery('publicChannel');
     const friends = useSelector((state: RootState) => state.friends.friends);
     const loading = useSelector((state: RootState) => state.friends.loading);
@@ -21,6 +20,8 @@ function AllChannels() {
     useEffect(() => {
         dispatch(getFriends());
     }, [dispatch]);
+
+    console.log(friends); 
 
     return (
         <div className="my-auto w-[500px]">
