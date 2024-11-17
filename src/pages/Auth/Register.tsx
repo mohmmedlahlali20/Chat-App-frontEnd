@@ -1,9 +1,42 @@
 import logo from "../../assets/logo.png";
 import background2 from '../../assets/background2.jpg';
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { register } from '../../Redux/Slices/Auth/RegisterSlice';
+import React, { useState } from "react";
+import { toast } from "react-toastify";
 
 
 function Register () {
+    const navigate = useNavigate();
+
+    const dispatch = useDispatch();
+
+    const [formData, setFormData] = useState({
+        name: '',
+        email: '',
+        password: '',
+    });
+
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setFormData({
+            ...formData,
+            [e.target.name]: e.target.value,
+        });
+    };
+
+    const handleSubmit = async (e: React.FormEvent) => {
+        e.preventDefault(); 
+        try {
+            await dispatch(register(formData)).unwrap();
+            toast.success('Registration Successfully');
+            navigate('/login');
+        } catch (err: any) {
+            toast.error(err);
+        }
+    };
+
+
 
     return (
 
@@ -31,21 +64,21 @@ function Register () {
 
                             <div id="forms-container" className="flex overflow-hidden transition-transform transform ease-in-out duration-500">
                                 <div id="clientForm" className="w-full">
-                                    <form className="grid grid-cols-1 gap-6 mt-8 md:grid-cols-2 ">
+                                    <form onSubmit={handleSubmit} className="grid grid-cols-1 gap-6 mt-8 md:grid-cols-2 ">
                                         <div>
-                                            <label className="block mb-2 text-sm text-gray-600 font-serif ">First Name</label>
-                                            <input name="firstName" type="text" placeholder="John" className="block w-full px-5 py-3 mt-2 text-gray-300 placeholder-gray-300   bg-purple-50 border border-gray-200 rounded-lg dark:text-gray-800 dark:border-purple-600 focus:border-purple-600 focus:ring-purple-600 focus:outline-none focus:ring focus:ring-opacity-40" />
+                                            <label className="block mb-2 text-sm text-gray-600 font-serif ">UserName</label>
+                                            <input name="name" value={formData.name} onChange={handleChange} required type="text" placeholder="John" className="block w-full px-5 py-3 mt-2 text-gray-300 placeholder-gray-300   bg-purple-50 border border-gray-200 rounded-lg dark:text-gray-800 dark:border-purple-600 focus:border-purple-600 focus:ring-purple-600 focus:outline-none focus:ring focus:ring-opacity-40" />
                                         </div>
 
                                         <div>
                                             <label className="block mb-2 text-sm text-gray-600 font-serif">Email address</label>
-                                            <input name="email" type="email" placeholder="johnsnow@example.com" className="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-300 bg-purple-50 border border-gray-200 rounded-lg dark:text-gray-800 dark:border-purple-600 focus:border-purple-600 focus:ring-purple-600 focus:outline-none focus:ring focus:ring-opacity-40" />
+                                            <input name="email" value={formData.email} onChange={handleChange} required type="email" placeholder="johnsnow@example.com" className="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-300 bg-purple-50 border border-gray-200 rounded-lg dark:text-gray-800 dark:border-purple-600 focus:border-purple-600 focus:ring-purple-600 focus:outline-none focus:ring focus:ring-opacity-40" />
                                         </div>
 
 
                                         <div>
                                             <label className="block mb-2 text-sm text-gray-600  font-serif">Password</label>
-                                            <input name="password" type="password" placeholder="Enter your password" className="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-300 bg-purple-50 border border-purple-200 rounded-lg dark:text-gray-800 dark:border-purple-600 focus:border-purple-600 focus:ring-purple-600 focus:outline-none focus:ring focus:ring-opacity-40" />
+                                            <input name="password" value={formData.password} onChange={handleChange} required type="password" placeholder="Enter your password" className="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-300 bg-purple-50 border border-purple-200 rounded-lg dark:text-gray-800 dark:border-purple-600 focus:border-purple-600 focus:ring-purple-600 focus:outline-none focus:ring focus:ring-opacity-40" />
                                         </div>
 
                                         <button type="submit"
