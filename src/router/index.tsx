@@ -4,6 +4,7 @@ import { NotFound } from "../pages";
 import {ChatBox} from "../components";
 import { Home } from "../pages";
 import { Login } from "../pages";
+import { Register } from "../pages";
  
 const router = createBrowserRouter([
     {
@@ -27,6 +28,10 @@ const router = createBrowserRouter([
     {
         path: "/Login",
         element: <Login />
+    },
+    {
+        path: "/Register",
+        element: <Register />
     }
     
 ]);
