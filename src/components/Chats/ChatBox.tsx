@@ -31,7 +31,6 @@ const ChatBox: React.FC<{ channelId?: string }> = ({channelId}) => {
         return () => socketIo.disconnect();
     }, [channelId, userId]);
 
-    // Sync fetched messages
     useEffect(() => {
         if (messages) {
             const filteredMessages = messages.filter(
@@ -41,7 +40,6 @@ const ChatBox: React.FC<{ channelId?: string }> = ({channelId}) => {
         }
     }, [messages, channelId]);
 
-    // Scroll to bottom
     useEffect(() => {
         chatRef.current?.scrollTo({top: chatRef.current.scrollHeight, behavior: "smooth"});
     }, [messageList]);
